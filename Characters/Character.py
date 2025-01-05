@@ -33,6 +33,7 @@ class Character:
     inventory: Gear = []
     loadout: list[Loadout] = []
 
+
     def __init__(self, name, stats, speeds, rank, hitDice, skills, damages, weapons, armours, languages):
         self.name = name
         self.stats = stats
