@@ -1,14 +1,14 @@
 import string
 
-from Characters.Hunter import Hunter
-from Loot.Loot import Loot
+from Characters import Character
+from Loot import Loot
 
 
 class Party:
 
     name: string = None
-    leader: Hunter = None
-    members: list[Hunter] = []
+    leader: Character = None
+    members: list[Character] = []
     active = False
     partyLoot: list[Loot] = []
 
@@ -17,8 +17,8 @@ class Party:
         self.leader = leader
         self.active = True
 
-    def addMember(self, player):
-        self.members.append(player)
+    def addMember(self, newMember):
+        self.members.append(newMember)
 
     def addLoot(self, loot):
         self.partyLoot.append(loot)

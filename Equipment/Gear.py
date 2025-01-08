@@ -1,7 +1,7 @@
 import string
 
-from Characters.Player import Player
-from Enums.GearSlot import GearSlot
+from Characters import Player
+from Enums import GearSlot
 
 
 class Gear:

@@ -1,9 +1,7 @@
 from enum import Enum
 
-from pip._internal.utils.misc import enum
 
-
-class GearSlot(enum):
+class GearSlot(Enum):
     HEAD = 1
     NECK = 2
     CHEST = 3

@@ -1,4 +1,4 @@
-from Equipment.Gear import Gear
+from Equipment import Gear
 
 
 class Armour(Gear):

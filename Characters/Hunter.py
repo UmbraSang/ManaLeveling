@@ -1,8 +1,7 @@
-from Character import Character
+from Characters.Character import Character
 from Enums.HunterClass import HunterClass
 from GameObjects.Guild import Guild
 from GameObjects.Party import Party
-from Loot.Loot import Loot
 
 
 class Hunter(Character):
@@ -11,7 +10,7 @@ class Hunter(Character):
     guild: Guild = None
     wealth = {}
     currParty: Party = None
-    hunterLoot: list[Loot] = []
+    hunterLoot = [] ###: list[Loot] = []
 
     def __init__(self, name, stats, speeds, rank, hitDice, skills, damages, weapons, armours, languages, hClass):
         super().__init__(name, stats, speeds, rank, hitDice, skills, damages, weapons, armours, languages)

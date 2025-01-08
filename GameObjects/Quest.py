@@ -1,6 +1,6 @@
 import string
 
-from Characters.Player import Player
+from Characters import Player
 from Enums.Rank import Rank
 
 

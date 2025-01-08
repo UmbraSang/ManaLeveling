@@ -1,6 +1,6 @@
 import string
 
-from Characters.Player import Player
+from Characters import Player
 
 
 class Title:

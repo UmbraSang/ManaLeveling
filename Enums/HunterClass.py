@@ -1,6 +1,6 @@
 from enum import Enum
 
-class HunterClass(enum):
+class HunterClass(Enum):
     TANK = 1
     FIGHTER = 2
     RANGER = 3

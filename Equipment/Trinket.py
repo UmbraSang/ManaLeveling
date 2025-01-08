@@ -1,4 +1,4 @@
-from Equipment.Armour import Armour
+from Equipment import Armour
 
 
 class Trinket(Armour):

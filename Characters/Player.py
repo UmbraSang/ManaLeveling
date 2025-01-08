@@ -1,19 +1,29 @@
-from GameObjects.Quest import Quest
+import math
+from Enums.Rank import Rank
 from GameObjects.Title import Title
-from Hunter import Hunter
+from Characters.Hunter import Hunter
 
 
 class Player(Hunter):
 
     exp: int = 0
     level: int = 0
-    statPoints:int = 0
+    rankUpArr: list[int] = [1,3,6,11,16,21,30,41]
+
+    spentStatPoints:int = 0
+    totalStatPoints: int = 0
+    statPointsPerLevel: int = 2
+    statPointInterval: int = 2
+    statPointIncrement: int = 1
+
     gold: int = 0
-    titles: list[Title] = []
+
+    titles = [] ###: list[Title] = []
     activeTitle: Title = None
     job = None
-    quests: list[Quest] = []
-    activeQuest: Quest = None
+
+    quests = [] ###: list[Quest] = []
+    activeQuest= None ###: Quest = None
     levelUpArray = []
 
     def __init__(self, name, stats, speeds, rank, hitDice, skills, damages, weapons, armours, languages, hClass):
@@ -27,14 +37,43 @@ class Player(Hunter):
                 if self.exp > x:
                     continue
                 else:
-                    self.level = self.levelUpArray.index(x-1)
+                    self.level = self.levelUpArray.index(x)
+                    self.levelUp()
+                    break
 
+    def getLevel(self):
+        return self.level
 
     def gainXP(self, xpGained):
         self.exp += xpGained
+        self.levelUpCheck()
 
     def gainStats(self, statGained):
         self.exp += statGained
 
     def gainGold(self, goldGained):
         self.gold += goldGained
+
+    def calculateStatPoints(self):
+        self.totalStatPoints = (self.level+1)*self.statPointsPerLevel
+
+    def incrementStats(self):
+        for x in self.stats:
+            x += self.statPointIncrement
+
+    def rankUP(self):
+        rankNum = math.floor((math.sqrt(1+8*self.level)-1)/2)
+        if rankNum > 8:
+            rankNum = 8
+        self.rank = Rank(rankNum)
+        self.updateProfBonus()
+
+    def levelUp(self):
+        self.updateHP() ### set new HP
+        self.calculateStatPoints() ### see if we add more statPoints
+        self.incrementStats() ### add to all stat scores
+        self.rankUP() ### update rank
+
+    def getSpeeds(self):
+        for x in self.Speed:
+            print(x +": "+ str(self.Speed[x]))

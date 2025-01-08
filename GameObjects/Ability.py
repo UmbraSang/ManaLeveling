@@ -1,13 +1,11 @@
 import string
 
-from Characters.Player import Player
-
 
 class Ability:
 
     name: string = None
     bodyText: string = None
-    players: list[Player] = []
+    players = [] ###: list[Player] = []
 
     def __init__(self, name, text):
         self.name = name

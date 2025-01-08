@@ -1,5 +1,5 @@
-from Enums.DamageType import DamageType
-from Equipment.Gear import Gear
+from Enums import DamageType
+from Equipment import Gear
 
 
 class Weapon(Gear):

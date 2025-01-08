@@ -4,9 +4,7 @@ from typing import Dict
 
 from Enums.DamageMods import DamageMods
 from Enums.Rank import Rank
-from Equipment import Gear
 from GameObjects.Ability import Ability
-from GameObjects.Loadout import Loadout
 
 
 class Character:
@@ -24,14 +22,15 @@ class Character:
     profBonus: int = 0
     rank: Rank = None
     hitDice = [0,0,0,0,0,0]
+    hitHP = [3,4,5,6,7,11]
     savingThrows = [0,0,0,0,0,0]
     skills = {}
-    incomingDamageMods: Dict[DamageMods] = {}
+    incomingDamageMods = {}
     weaponProf = {}
     armourProf = {}
     languages = []
-    inventory: Gear = []
-    loadout: list[Loadout] = []
+    inventory = [] ###: Gear = []
+    loadout =[] ###: list[Loadout] = []
 
 
     def __init__(self, name, stats, speeds, rank, hitDice, skills, damages, weapons, armours, languages):
@@ -50,10 +49,12 @@ class Character:
 
 
     def updateHP(self):
-        y=0
-        for x in self.hitDice:
-            y = y + math.ceil(x)
-        self.maxHealth = y + self.stats[2]
+        y = 0
+        z = 0
+        for (a, b) in zip(self.hitDice, self.hitHP):
+            y += a*b
+            z += a
+        self.maxHealth = y + z*self.stats[2]
 
     def updateProfBonus(self):
         if self.rank == Rank.E:
@@ -86,4 +87,3 @@ class Character:
         elif mod == DamageMods.VULNERABLE:
             if self.incomingDamageMods[dmgType] == DamageMods.RESISTANT:
                 self.incomingDamageMods.pop(dmgType)
-

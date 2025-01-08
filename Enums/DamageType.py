@@ -1,7 +1,7 @@
-from pip._internal.utils.misc import enum
+from enum import Enum
 
 
-class DamageType(enum):
+class DamageType(Enum):
     ACID = 1
     BLUDGEONING = 2
     COLD = 3

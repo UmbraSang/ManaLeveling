@@ -1,8 +1,8 @@
 import string
 
-from Characters.Hunter import Hunter
-from GameObjects.Party import Party
-from Loot.Loot import Loot
+from Characters import Hunter
+from GameObjects import Party
+from Loot import Loot
 
 
 class Guild:

@@ -1,9 +1,8 @@
-from Characters.Player import Player
 from Equipment.Gear import Gear
 
 
 class Loadout:
-    owner: Player = None
+    owner = None ###: Player = None
     numAllowedHead: int = 1
     numAllowedNeck: int = 1
     numAllowedChest: int = 1
