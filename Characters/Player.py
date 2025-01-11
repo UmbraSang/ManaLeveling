@@ -75,5 +75,5 @@ class Player(Hunter):
         self.rankUP() ### update rank
 
     def getSpeeds(self):
-        for x in self.Speed:
-            print(x +": "+ str(self.Speed[x]))
+        for x in self.speed:
+            print(x +": " + str(self.speed[x]))

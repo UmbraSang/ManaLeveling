@@ -10,35 +10,41 @@ from GameObjects.Ability import Ability
 class Character:
 
     name: string = None
+    gender: Gender = None
     stats = [0,0,0,0,0,0]
+    rank: Rank = None
     abilities: list[Ability] = []
+
     currHealth: int = 0
     maxHealth: int = 0
     currMana: int = 0
     maxMana: int = 0
     AC: int = 0
-    Speed = {} ###{"walk":0, "swim": 0, "climb": 0, "fly": 0, "dig":0}
-    Initiative:int = 0
+    speed = {} ###{"walk":0, "swim": 0, "climb": 0, "fly": 0, "dig":0}
+    initiative:int = 0
     profBonus: int = 0
-    rank: Rank = None
+
     hitDice = [0,0,0,0,0,0]
     hitHP = [3,4,5,6,7,11]
     savingThrows = [0,0,0,0,0,0]
     skills = {}
     incomingDamageMods = {}
+
     weaponProf = {}
     armourProf = {}
     languages = []
+
     inventory = [] ###: Gear = []
     loadout =[] ###: list[Loadout] = []
 
 
-    def __init__(self, name, stats, speeds, rank, hitDice, skills, damages, weapons, armours, languages):
+    def __init__(self, name, stats, speeds, rank, hitDice, skills, damages, weapons, armours, languages, gender):
         self.name = name
+        self.gender = gender
         self.stats = stats
         self.hitDice = hitDice
         self.updateHP()
-        self.Speed = speeds
+        self.speed = speeds
         self.rank = rank
         self.updateProfBonus()
         self.skills = skills
